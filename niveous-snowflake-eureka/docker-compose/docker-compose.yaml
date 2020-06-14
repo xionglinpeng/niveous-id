@@ -1,0 +1,18 @@
+version: '3.7'
+services:
+  niveous-snowflake:
+    image: registry.cn-hangzhou.aliyuncs.com/xionglinpeng/niveous-snowflake:1.0.0-alpine
+    container_name: "niveous-snowflake"
+    ports:
+      - "17890:8080"
+    restart: always
+    environment:
+      APOLLO_BOOTSTRAP_NAMESPACES: "application"
+      APOLLO_META: "http://apollo-configservice:8080"
+      APP_ID: "niveous-snowflake"
+      ENV: DEV
+    networks:
+      - "network-apollo"
+networks:
+  network-apollo:
+    external: true
